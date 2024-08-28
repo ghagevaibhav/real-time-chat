@@ -10,7 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/websocket": "^1.0.10",
     "typescript": "^5.5.4",
     "websocket": "^1.0.35"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.1"
   }
 }
