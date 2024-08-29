@@ -1,20 +1,20 @@
 
 import z from 'zod' 
 
-export const enum SupportedMessages{
+export const enum SupportedMessage{
     JoinRoom = 'JOIN_ROOM',
     SendMessage = 'SEND_MESSAGE',
     UpvoteMessage = 'UPVOTE_MESSAGE'
 }
 
-export type IncomingMegssages = {
-    type: SupportedMessages.JoinRoom,
+export type IncomingMessage = {
+    type: SupportedMessage.JoinRoom,
     payload: InitMessageType
 } |  {
-    type: SupportedMessages.SendMessage,
+    type: SupportedMessage.SendMessage,
     payload: UserMessageType
 } | {
-    type: SupportedMessages.UpvoteMessage,
+    type: SupportedMessage.UpvoteMessage,
     payload: UpvoteMessageType
 } 
 

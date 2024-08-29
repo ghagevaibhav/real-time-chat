@@ -60,6 +60,7 @@ export class InMemoryStore implements Store{
         if(chat){
             chat.upvotes.push(userId)
         }
+        return chat; 
 
     }
 
