@@ -1,4 +1,4 @@
-import { OutgoingMessage, SupportedMessage as OutgoingSupportedMessage } from "./messages/outgoingMessages";
+import { OutgoingMessage, SupportedMessage as OutgoingSupportedMessages } from "./messages/outgoingMessages";
 import {server as WebSocketServer, connection} from "websocket"
 import http from 'http';
 import { UserManager } from "./UserManager";
@@ -74,17 +74,17 @@ function messageHandler(ws: connection, message: IncomingMessage) {
             return;
         }
 
-        const OutgoingPayload: OutgoingMessage = {
-            type: OutgoingSupportedMessage.AddChat,
+        const outgoingPayload: OutgoingMessage= {
+            type: OutgoingSupportedMessages.AddChat,
             payload: {
                 chatId: chat.id,
                 roomId: payload.roomId,
                 message: payload.message,
-                name: user.name,
+                name: user.name,    
                 upvotes: 0
             }
         }
-        userManager.broadcast(payload.roomId, payload.userId, OutgoingPayload);
+        userManager.broadcast(payload.roomId, payload.userId, outgoingPayload);
     }
 
     if (message.type === SupportedMessage.UpvoteMessage) {
@@ -96,8 +96,8 @@ function messageHandler(ws: connection, message: IncomingMessage) {
         }
         console.log("inside upvote 2")
 
-        const OutgoingPayload: OutgoingMessage= {
-            type: OutgoingSupportedMessage.UpdateChat,
+        const outgoingPayload: OutgoingMessage = {
+            type: OutgoingSupportedMessages.UpdateChat,
             payload: {
                 chatId: payload.chatId,
                 roomId: payload.roomId,
@@ -106,6 +106,6 @@ function messageHandler(ws: connection, message: IncomingMessage) {
         }
 
         console.log("inside upvote 3")
-        userManager.broadcast(payload.roomId, payload.userId, OutgoingPayload);
+        userManager.broadcast(payload.roomId, payload.userId, outgoingPayload);
     }
 }
