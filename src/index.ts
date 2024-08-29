@@ -80,7 +80,7 @@ function messageHandler(ws: connection, message: IncomingMessage) {
                 chatId: chat.id,
                 roomId: payload.roomId,
                 message: payload.message,
-                name: user.name,    
+                name: user.name,
                 upvotes: 0
             }
         }
@@ -96,7 +96,7 @@ function messageHandler(ws: connection, message: IncomingMessage) {
         }
         console.log("inside upvote 2")
 
-        const outgoingPayload: OutgoingMessage = {
+        const outgoingPayload: OutgoingMessage= {
             type: OutgoingSupportedMessages.UpdateChat,
             payload: {
                 chatId: payload.chatId,

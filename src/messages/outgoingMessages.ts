@@ -1,9 +1,8 @@
-export enum SupportedMessage {
+export const enum SupportedMessage {
     AddChat = "ADD_CHAT",
     UpdateChat = "UPDATE_CHAT",
 }
 
-namespace MessageTypes {
     export interface BasePayload {
         roomId: string;
     }
@@ -29,6 +28,4 @@ namespace MessageTypes {
               type: SupportedMessage.UpdateChat;
               payload: UpdateChatPayload;
           };
-}
 
-export type OutgoingMessage = MessageTypes.OutgoingMessage;
