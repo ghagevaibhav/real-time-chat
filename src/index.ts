@@ -12,8 +12,6 @@ const server = http.createServer(function(request: any, response: any) {
     response.end();
 });
 
-server
-
 const userManager = new UserManager();
 const store = new InMemoryStore();
 
@@ -23,7 +21,7 @@ server.listen(8080, function() {
 
  const wsServer = new WebSocketServer({
     httpServer: server,
-    autoAcceptConnections: true
+    autoAcceptConnections: false
 });
 
 function originIsAllowed(origin: string) {
@@ -47,10 +45,10 @@ wsServer.on('request', function(request) {
         // Todo add rate limitting logic here 
         if (message.type === 'utf8') {
             try {
-                console.log("Received Message: " + message.utf8Data);
+                console.log("message", message.utf8Data);
                 messageHandler(connection, JSON.parse(message.utf8Data));
             } catch(e) {
-
+                console.log("Error parsing message", e);  
             }
         }
     });
