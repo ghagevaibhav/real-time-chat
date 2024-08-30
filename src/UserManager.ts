@@ -32,8 +32,7 @@ export class UserManager {
             this.removeUser(roomId, userId);
         });
     }
-    
-    
+
     removeUser(roomId: string, userId: string) {
         console.log("removed user");
         const users = this.rooms.get(roomId)?.users;

@@ -12,6 +12,8 @@ const server = http.createServer(function(request: any, response: any) {
     response.end();
 });
 
+server
+
 const userManager = new UserManager();
 const store = new InMemoryStore();
 
@@ -45,10 +47,9 @@ wsServer.on('request', function(request) {
         // Todo add rate limitting logic here 
         if (message.type === 'utf8') {
             try {
-                console.log("message", message.utf8Data);
                 messageHandler(connection, JSON.parse(message.utf8Data));
             } catch(e) {
-                console.log("Error parsing message", e);  
+
             }
         }
     });
