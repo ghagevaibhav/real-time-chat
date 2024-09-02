@@ -12,8 +12,6 @@ const server = http.createServer(function(request: any, response: any) {
     response.end();
 });
 
-server
-
 const userManager = new UserManager();
 const store = new InMemoryStore();
 
