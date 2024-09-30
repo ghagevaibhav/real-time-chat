@@ -64,7 +64,6 @@ function messageHandler(ws: connection, message: IncomingMessage) {
         const user = userManager.getUser(payload.roomId, payload.userId);
 
         if (!user) {
-            console.error("User not found in the db");
             return;
         }
         let chat = store.addChat(payload.userId, user.name, payload.roomId, payload.message);
@@ -92,7 +91,6 @@ function messageHandler(ws: connection, message: IncomingMessage) {
         if (!chat) {
             return;
         }
-        console.log("inside upvote 2")
 
         const outgoingPayload: OutgoingMessage= {
             type: OutgoingSupportedMessages.UpdateChat,
@@ -103,7 +101,6 @@ function messageHandler(ws: connection, message: IncomingMessage) {
             }
         }
 
-        console.log("inside upvote 3")
         userManager.broadcast(payload.roomId, payload.userId, outgoingPayload);
     }
 }
